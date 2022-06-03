@@ -16,10 +16,11 @@ export default class DeviceStore {
       {id: 2, name: 'Без материала'}
     ]
     this._sizes = [
-      {id: 1, size: 400/600},
-      {id: 2, size: 400/1200},
-      {id: 3, size: 400/1400},
-      {id: 4, size: 400/1600},
+      {id: 1, name: 'Дом 8 на 8', size: '400/600', price: '360 000 руб',},
+      {id: 2, name: 'Дом 9 на 9', size: '400/1200', price: '405 000 руб'},
+      {id: 3, name: 'Дом 9 на 10', size: '400/1400', price: '435 000 руб'},
+      {id: 4, name: 'Дом 10 на 10', size: '400/1600', price: '435 000 руб'},
+      {id: 5, name: 'Дом 10 на 12', price: '465 000 руб'},
     ]
     this._selectedType = {}
     this._selectedMaterial = {}

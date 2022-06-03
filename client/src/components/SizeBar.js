@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { observer } from "mobx-react-lite";
-import { Context } from "..";
+// import { observer } from "mobx-react-lite";
+// import { Context } from "..";
 import { Row, Table } from "react-bootstrap";
+import PriceWithMaterial from "./PriceWithMaterial";
 
-const SizeBar = observer(() => {
-  const {device} = useContext(Context);
+const SizeBar = () => {
   return (
     <Row>
       <h1>
@@ -13,7 +13,8 @@ const SizeBar = observer(() => {
       <p>
       Расчет типовых популярных размеров ленточного фундамента. Цена, ориентировочная, под ключ в Москве и Московской области, включает в себя: материалы (арматура, бетон, песок, щебень, опалубка, крепежный материал и др.), доставка, работы по устройству фундамента (земляные работы), уборка мусора.
       </p>
-    <Table striped bordered hover>
+      <PriceWithMaterial/>
+    {/* <Table striped bordered hover>
   <thead>
     <tr>
       <th>
@@ -72,9 +73,9 @@ const SizeBar = observer(() => {
       <td>720 000 руб.</td>
     </tr>
   </tbody>
-</Table>
+</Table> */}
 </Row>
   )
-});
+};
 
 export default SizeBar;
