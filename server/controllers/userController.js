@@ -3,10 +3,6 @@ const ApiError = require('../error/ApiError');
 const { User } = require('../db/models');
 
 class UserController {
-  async registration(req, res) {
-
-  }
-
   async login(req, res, next) {
     const { email, password } = req.body;
     if (email && password) {
@@ -20,8 +16,8 @@ class UserController {
     }
   }
 
-  async check(req, res, next) {
-  }
+  // async check(req, res, next) {
+  // }
 }
 
 module.exports = new UserController();

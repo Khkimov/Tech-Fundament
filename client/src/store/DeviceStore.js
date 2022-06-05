@@ -22,6 +22,12 @@ export default class DeviceStore {
       {id: 4, name: 'Дом 10 на 10', size: '400/1600', price: '435 000 руб'},
       {id: 5, name: 'Дом 10 на 12', price: '465 000 руб'},
     ]
+    this._smallSizes = [
+      {id: 1, name: '3 на 4', size: '300мм/500', price: '97 000 руб',},
+      {id: 2, name: '4 на 4', size: '300мм/600', price: '105 000 руб'},
+      {id: 3, name: '5 на 6', size: '300мм/1000', price: '165 000 руб'},
+      {id: 4, name: '6 на 6', size: '300мм/1400', price: '180 000 руб'},
+    ]
     this._selectedType = {}
     this._selectedMaterial = {}
     makeAutoObservable(this)
@@ -36,6 +42,10 @@ export default class DeviceStore {
   }
   setSizes(sizes) {
     this._sizes = sizes
+  }
+
+  setSmallSizes(smallSizes) {
+    this._smallSizes = smallSizes
   }
 
   setSelectedType(type) {
@@ -57,6 +67,10 @@ export default class DeviceStore {
 
   get sizes() {
     return this._sizes
+  }
+
+  get smallSizes() {
+    return this._smallSizes
   }
 
   get selectedType() {

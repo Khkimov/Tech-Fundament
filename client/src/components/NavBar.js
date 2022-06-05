@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark">
     <Container>
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+    <Navbar.Brand href="#home">ФУНДАМЕНТ</Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link href="#home">
         <EmailModal/>
