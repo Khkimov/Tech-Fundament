@@ -3,9 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import { authRoutes, publicRoutes } from '../routes';
 import Shop from '../pages/Shop';
 import { Context } from '..';
+import { observer } from 'mobx-react-lite';
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
   const {admin} = useContext(Context);
+  console.log(admin);
   return (
     <Routes>
       {admin.isAuth && authRoutes.map(({path, Component}) =>
@@ -14,9 +16,9 @@ const AppRouter = () => {
       {publicRoutes.map(({path, Component}) =>
       <Route key={path} path={path} element={<Component/>} exact/>
       )}
-      <Route path="*" element={<Shop/>}/>
+      {/* <Route path="*" element={<Shop/>}/> */}
     </Routes>
   )
-}
+})
 
 export default AppRouter;

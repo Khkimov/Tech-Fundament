@@ -9,16 +9,20 @@ const SmallSizes = observer(() => {
     <Table striped bordered hover>
         <thead>
           <th>Размер, ширина/глубина</th>
-      {device.smallSizes.map(size => 
-          <th key={size.id}>{size.size}</th>
-          )}
+          <th>300/500</th>
+          <th>300/600</th>
+          <th>300/1000</th>
+          <th>300/1400</th>
           </thead>
           <tbody>
             
           {device.smallSizes.map((size, index) => 
           <tr key={index}>
             <td>{size.name}</td>
-            <td>{size.price}</td>
+            <td>{size.price['300/500']}</td>
+            <td>{size.price['300/600']}</td>
+            <td>{size.price['300/1000']}</td>
+            <td>{size.price['300/1400']}</td>
           </tr>
           )}
           </tbody>

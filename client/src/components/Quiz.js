@@ -46,7 +46,7 @@ const Quiz = () => {
           />
           <Button className={"mt-2"} 
           variant="outline-dark"
-          style={{width: '290px'}}
+          // style={{width: '290px'}}
           
           >
             Отправить
