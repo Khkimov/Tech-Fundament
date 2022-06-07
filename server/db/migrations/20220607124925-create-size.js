@@ -8,30 +8,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      size: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      typeId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Types',
-          key: 'id',
-        },
-      },
-      materialId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Materials',
-          key: 'id',
-        },
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,

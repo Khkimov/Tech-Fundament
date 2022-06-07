@@ -1,42 +1,15 @@
 const { Size } = require('../db/models');
-const ApiError = require('../error/ApiError');
 
 class SizeController {
-  async create(req, res, next) {
-    try {
-      const {
-        name, size, price, typeId, materialId,
-      } = req.body;
-      console.log(req.body);
-      const sizeAndName = await Size.create({
-        name, size, price, typeId, materialId,
-      });
-      return res.json(sizeAndName);
-    } catch (error) {
-      next(ApiError.badRequest(error.message));
-    }
+  async create(req, res) {
+    const { name } = req.body;
+    const size = await Size.create({ name });
+    return res.json(size);
   }
 
   async getAll(req, res) {
-    const { materialId, typeId } = req.query;
-    let sizes;
-    if (!materialId && !typeId) {
-      sizes = await Size.findAll();
-    }
-    if (materialId && !typeId) {
-      sizes = await Size.findAll({ where: { materialId } });
-    }
-    if (!materialId && typeId) {
-      sizes = await Size.findAll({ where: { typeId } });
-    }
-    if (materialId && typeId) {
-      sizes = await Size.findAll({ where: { typeId, materialId } });
-    }
+    const sizes = await Size.findAll();
     return res.json(sizes);
-  }
-
-  async getOne(req, res) {
-
   }
 }
 

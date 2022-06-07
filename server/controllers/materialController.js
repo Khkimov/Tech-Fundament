@@ -1,5 +1,4 @@
 const { Material } = require('../db/models');
-const ApiError = require('../error/ApiError');
 
 class MaterialController {
   async create(req, res) {
@@ -14,4 +13,4 @@ class MaterialController {
   }
 }
 
-module.exports = new MaterialController()
+module.exports = new MaterialController();

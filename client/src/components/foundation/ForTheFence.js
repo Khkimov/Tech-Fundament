@@ -5,15 +5,11 @@ import { Table } from "react-bootstrap";
 
 const PriceWithMaterial = observer(() => {
   const {device} = useContext(Context);
-  
   return (
     <Table striped bordered hover>
         <thead>
-          <th>Размер, ширина/глубина</th>
-          <th>400/600</th>
-          <th>400/1200</th>
-          <th>400/1400</th>
-          <th>400/1600</th>
+          <th>Ширина, высота</th>
+          <th>Стоимость</th>
           </thead>
           <tbody>
             

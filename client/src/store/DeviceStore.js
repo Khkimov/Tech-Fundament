@@ -4,7 +4,7 @@ export default class DeviceStore {
   constructor() {
     this._types = [
       {id: 1, name: 'Ленточный фундамент'},
-      {id: 2, name: 'Монолитная плита'},
+      {id: 2, name: 'Фундамент для забора'},
       {id: 3, name: 'Цокольный этаж'},
       {id: 4, name: 'УШП фундамент'},
       {id: 5, name: 'Свайно-ростверковый'},

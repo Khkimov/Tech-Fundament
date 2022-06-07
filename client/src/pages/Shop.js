@@ -15,7 +15,6 @@ const Shop = () => {
           <Quiz/>
         </Col>
         <Col md={9}>
-          <Materials/>
           <SizeBar />
         </Col>
       </Row>
