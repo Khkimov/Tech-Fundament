@@ -18,7 +18,7 @@ const SizeBar = () => {
       </p>
       <PriceWithMaterial/>
       <h5>Расчет для небольших строений: баня, гараж, сарай и др.</h5>
-      <SmallSizes/>
+      {/* <SmallSizes/> */}
    </Row>
   )
 };

@@ -2,51 +2,11 @@ import {makeAutoObservable} from 'mobx';
 
 export default class DeviceStore {
   constructor() {
-    this._types = [
-      {id: 1, name: 'Ленточный фундамент'},
-      {id: 2, name: 'Фундамент для забора'},
-      {id: 3, name: 'Цокольный этаж'},
-      {id: 4, name: 'УШП фундамент'},
-      {id: 5, name: 'Свайно-ростверковый'},
-      {id: 6, name: 'Свайно-забивной'},
-      {id: 7, name: 'Свайно-винтовой'}
-    ]
-    this._materials = [
-      {id: 1, name: 'Под ключ'},
-      {id: 2, name: 'Без материала'}
-    ]
-    this._sizes = [
-      {id: 1, name: 'Дом 8 на 8', price: {
-        '400/600': '360 000р',
-        '400/1200': '510 000r',
-        '400/1400': '570 000r',
-        '400/1600': '600 000r'
-      }},
-      {id: 2, name: 'Дом 9 на 9', price: {
-        '400/600': '405 000р',
-        '400/1200': '555 000r',
-        '400/1400': '615 000r',
-        '400/1600': '645 000r'
-      }},
-      {id: 3, name: 'Дом 9 на 10', price: {
-        '400/600': '435 000р',
-        '400/1200': '570 000r',
-        '400/1400': '630 000r',
-        '400/1600': '660 000r'
-      }},
-      {id: 4, name: 'Дом 10 на 10', price: {
-        '400/600': '435 000р',
-        '400/1200': '600 000r',
-        '400/1400': '675 000r',
-        '400/1600': '705 000r'
-      }},
-      {id: 4, name: 'Дом 10 на 12', price: {
-        '400/600': '465 000р',
-        '400/1200': '615 000r',
-        '400/1400': '690 000r',
-        '400/1600': '720 000r'
-      }},
-    ]
+    this._types = []
+    this._materials = []
+    this._sizes = []
+    this._houses = []
+    this._prices = []
     this._smallSizes = [
       {id: 1, name: '3 на 4', price: {
         '300/500': '97 000р',
@@ -117,8 +77,17 @@ export default class DeviceStore {
   setMaterials(materials) {
     this._materials = materials
   }
+
+  setHouses(houses) {
+    this._houses = houses
+  }
+
   setSizes(sizes) {
     this._sizes = sizes
+  }
+
+  setPrices(prices) {
+    this._prices = prices
   }
 
   setSmallSizes(smallSizes) {
@@ -146,8 +115,16 @@ export default class DeviceStore {
     return this._materials
   }
 
+  get houses() {
+    return this._houses
+  }
+
   get sizes() {
     return this._sizes
+  }
+
+  get prices() {
+    return this._prices
   }
 
   get smallSizes() {

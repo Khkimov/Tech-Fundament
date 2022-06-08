@@ -28,8 +28,8 @@ const Quiz = () => {
                 )}
           </Form.Select>
           <Form.Select className={"mt-2 mb-2"}>
-              {device.sizes.map(size => 
-                <option key={size.id}>{size.size}</option>
+              {device.prices.map(price => 
+                <option key={price.id}>{price.price}</option>
                 )}
           </Form.Select>
           <Form.Control

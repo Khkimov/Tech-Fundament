@@ -1,18 +1,31 @@
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useContext, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { Context } from '..';
 import Carusel from '../components/Carusel';
 import Materials from '../components/Materials';
 import Quiz from '../components/Quiz';
 import SizeBar from '../components/SizeBar';
 import TypeBar from '../components/TypeBar';
+import { fetchMaterials, fetchTypes, fetchSizes, fetchHouses, fetchPrices } from '../http/deviceAPI';
 
-const Shop = () => {
+const Shop = observer(() => {
+  const {device} = useContext(Context);
+
+  useEffect(() => {
+    fetchTypes().then(data => device.setTypes(data))
+    fetchMaterials().then(data => device.setMaterials(data))
+    fetchHouses().then(data => device.setHouses(data))
+    fetchSizes().then(data => device.setSizes(data))
+    fetchPrices().then(data => device.setPrices(data))
+  }, [])
+
   return (
     <Container>
       <Row className={"mt-4"}>
         <Col md={3}>
           <TypeBar />
-          <Quiz/>
+          {/* <Quiz/> */}
         </Col>
         <Col md={9}>
           <SizeBar />
@@ -25,6 +38,6 @@ const Shop = () => {
       </Row>
     </Container>
   )
-}
+});
 
 export default Shop;
