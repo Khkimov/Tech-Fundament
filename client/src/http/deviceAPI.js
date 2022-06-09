@@ -57,7 +57,9 @@ export const createPrice = async (price) => {
   return data;
 }
 
-export const fetchPrices = async () => {
-  const {data} = await $host.get('api/price' )
+export const fetchPrices = async (typeId, sizeId, houseId, materialId) => {
+  const {data} = await $host.get('api/price', {params: {
+    typeId, sizeId, houseId, materialId
+  }})
   return (data)
 }

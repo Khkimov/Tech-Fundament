@@ -40,11 +40,13 @@ class PriceController {
         acc[el.House.name] = [{
           price: el.price,
           size: el.Size.name,
+          materialId: el.materialId,
         }];
       } else {
         acc[el.House.name].push({
           price: el.price,
           size: el.Size.name,
+          materialId: el.materialId,
         });
       }
       return acc;

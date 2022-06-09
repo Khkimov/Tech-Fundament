@@ -20,6 +20,12 @@ const Shop = observer(() => {
     fetchPrices().then(data => device.setPrices(data))
   }, [])
 
+  useEffect(() => {
+    fetchPrices(device.selectedType.id, device.selectedMaterial.id).then(data => {
+      device.setPrices(data)
+    })
+  }, [device.selectedType, device.selectedMaterial])
+
   return (
     <Container>
       <Row className={"mt-4"}>

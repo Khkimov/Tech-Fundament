@@ -67,6 +67,8 @@ export default class DeviceStore {
     ]
     this._selectedType = {}
     this._selectedMaterial = {}
+    this._selectedHouse = {}
+    this._selectedSize = {}
     makeAutoObservable(this)
   }
 
@@ -106,6 +108,14 @@ export default class DeviceStore {
     this._selectedMaterial = material
   }
 
+  setSelectedHouse(house) {
+    this._selectedHouse = house
+  }
+
+  setSelectedSize(size) {
+    this._selectedSize = size
+  }
+
 
   get types() {
     return this._types
@@ -141,5 +151,13 @@ export default class DeviceStore {
 
   get selectedMaterial() {
     return this._selectedMaterial
+  }
+
+  get selectedHouse() {
+    return this._selectedHouse
+  }
+
+  get selectedSize() {
+    return this._selectedSize
   }
 }

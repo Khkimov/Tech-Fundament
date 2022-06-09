@@ -25,10 +25,10 @@ app.use(
   }),
 );
 
-// app.use((req, res, next) => {
-//   res.locals.admin = req.session?.admin;
-//   next();
-// });
+app.use((req, res, next) => {
+  res.locals.admin = req.session?.admin;
+  next();
+});
 
 app.use('/api', router);
 

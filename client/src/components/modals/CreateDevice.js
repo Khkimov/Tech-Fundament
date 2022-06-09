@@ -1,9 +1,19 @@
-import React, { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import React, { useContext, useEffect } from "react";
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { Context } from "../..";
+import { fetchTypes, fetchMaterials, fetchHouses, fetchSizes, fetchPrices } from "../../http/deviceAPI";
 
-const CreateDevice = ({show, onHide}) => {
+const CreateDevice = observer(({show, onHide}) => {
   const {device} = useContext(Context);
+
+  useEffect(() => {
+    fetchTypes().then(data => device.setTypes(data))
+    fetchMaterials().then(data => device.setMaterials(data))
+    fetchHouses().then(data => device.setHouses(data))
+    fetchSizes().then(data => device.setSizes(data))
+    fetchPrices().then(data => device.setPrices(data))
+  }, [])
   return (
     <Modal
       show={show}
@@ -18,34 +28,57 @@ const CreateDevice = ({show, onHide}) => {
       <Modal.Body>
         <Form>
           <Dropdown className={"mt-2 mb-2"}>
-            <Dropdown.Toggle>Выберите тип</Dropdown.Toggle>
+            <Dropdown.Toggle>
+              {device.selectedType.name || "Выберите тип"}
+              </Dropdown.Toggle>
             <Dropdown.Menu>
               {device.types.map(type => 
-                <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
+                <Dropdown.Item 
+                onClick={() => device.setSelectedType(type)} 
+                key={type.id}>{type.name}
+                </Dropdown.Item>
                 )}
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown className={"mt-2 mb-2"}>
-            <Dropdown.Toggle>Под ключ или без материала</Dropdown.Toggle>
+            <Dropdown.Toggle>
+              {device.selectedMaterial.name || "Под ключ или без материала"}
+              </Dropdown.Toggle>
             <Dropdown.Menu>
               {device.materials.map(material => 
-                <Dropdown.Item key={material.id}>{material.name}</Dropdown.Item>
+                <Dropdown.Item 
+                onClick={() => device.setSelectedMaterial(material)} 
+                key={material.id}>
+                  {material.name}
+                </Dropdown.Item>
                 )}
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown className={"mt-2 mb-2"}>
-            <Dropdown.Toggle>Выберите размер дома</Dropdown.Toggle>
+            <Dropdown.Toggle>
+              {device.selectedHouse.name || "Выберите размер дома"}
+              </Dropdown.Toggle>
             <Dropdown.Menu>
-              {device.sizes.map(size => 
-                <Dropdown.Item key={size.id}>{size.name}</Dropdown.Item>
+              {device.houses.map(house => 
+                <Dropdown.Item 
+                onClick={() => device.setSelectedHouse(house)}
+                key={house.id}>
+                  {house.name}
+                  </Dropdown.Item>
                 )}
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown className={"mt-2 mb-2"}>
-            <Dropdown.Toggle>Выберите размер фундамента</Dropdown.Toggle>
+            <Dropdown.Toggle>
+              {device.selectedSize.name || "Выберите размер фундамента"}
+              </Dropdown.Toggle>
             <Dropdown.Menu>
               {device.sizes.map(size => 
-                <Dropdown.Item key={size.id}>{size.size}</Dropdown.Item>
+                <Dropdown.Item 
+                onClick={() => device.setSelectedSize(size)} 
+                key={size.id}>
+                  {size.name}
+                  </Dropdown.Item>
                 )}
             </Dropdown.Menu>
           </Dropdown>
@@ -63,13 +96,13 @@ const CreateDevice = ({show, onHide}) => {
           />
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="outline-danger" onClick={onHide}>Закрыть</Button>
-        <Button variant="outline-success" onClick={onHide}>Изменить</Button>
+      <Modal.Footer className={"justify-content-around"}>
+        <Button variant="outline-danger" onClick={onHide}>Удалить</Button>
+        <Button variant="outline-warning" onClick={onHide}>Изменить</Button>
         <Button variant="outline-success" onClick={onHide}>Добавить</Button>
       </Modal.Footer>
     </Modal>
   )
-};
+});
 
 export default CreateDevice;
