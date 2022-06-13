@@ -1,9 +1,11 @@
 const checkAdmin = (req, res, next) => {
-  if (req.session.admin) {
+  if (req.session.cookie) {
     next();
   } else {
-    res.sedStatus(401);
+    res.sendStatus(401);
   }
 };
 
-module.exports = { checkAdmin };
+module.exports = {
+  checkAdmin,
+};

@@ -2,8 +2,8 @@ const { Type } = require('../db/models');
 
 class TypeController {
   async create(req, res) {
-    console.log('===============', req.body);
     const { name } = req.body;
+    console.log(name);
     const type = await Type.create({ name });
     return res.json(type);
   }
@@ -14,4 +14,4 @@ class TypeController {
   }
 }
 
-module.exports = new TypeController()
+module.exports = new TypeController();

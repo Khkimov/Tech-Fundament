@@ -28,6 +28,7 @@ class PriceController {
   async getAll(req, res) {
     const prices = await Price.findAll({
       include: [House, Size, Type, Material],
+      raw: true,
     });
     // const pr = prices.map((el) => ({
     //   price: el.price,
@@ -36,16 +37,16 @@ class PriceController {
     // }));
 
     const allPrices = prices.reduce((acc, el) => {
-      if (!acc[el.House.name]) {
-        acc[el.House.name] = [{
+      if (!acc[el['House.name']]) {
+        acc[el['House.name']] = [{
           price: el.price,
-          size: el.Size.name,
+          size: el['Size.name'],
           materialId: el.materialId,
         }];
       } else {
-        acc[el.House.name].push({
+        acc[el['House.name']].push({
           price: el.price,
-          size: el.Size.name,
+          size: el['Size.name'],
           materialId: el.materialId,
         });
       }

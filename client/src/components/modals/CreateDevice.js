@@ -1,11 +1,16 @@
 import { observer } from "mobx-react-lite";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { Context } from "../..";
-import { fetchTypes, fetchMaterials, fetchHouses, fetchSizes, fetchPrices } from "../../http/deviceAPI";
+import { fetchTypes, fetchMaterials, fetchHouses, fetchSizes, fetchPrices, createPrice } from "../../http/deviceAPI";
 
 const CreateDevice = observer(({show, onHide}) => {
   const {device} = useContext(Context);
+  const [name, setName] = useState('');
+  const [material, setMaterial] = useState(null);
+  const [type, setType] = useState(null);
+  const [size, setSize] = useState(null);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     fetchTypes().then(data => device.setTypes(data))
@@ -14,6 +19,18 @@ const CreateDevice = observer(({show, onHide}) => {
     fetchSizes().then(data => device.setSizes(data))
     fetchPrices().then(data => device.setPrices(data))
   }, [])
+
+  const addDevice = () => {
+
+    const newJson = {
+      price,
+      typeId: device.selectedType.id,
+      materialId: device.selectedMaterial.id,
+      houseId: device.selectedHouse.id,
+      sizeId: device.selectedSize.id
+    }
+    createPrice(newJson).then(data => onHide())
+  }
   return (
     <Modal
       show={show}
@@ -35,7 +52,8 @@ const CreateDevice = observer(({show, onHide}) => {
               {device.types.map(type => 
                 <Dropdown.Item 
                 onClick={() => device.setSelectedType(type)} 
-                key={type.id}>{type.name}
+                key={type.id}>
+                  {type.name}
                 </Dropdown.Item>
                 )}
             </Dropdown.Menu>
@@ -91,6 +109,8 @@ const CreateDevice = observer(({show, onHide}) => {
           placeholder="Введите размер фундамента, типа(400/600)"
           />
           <Form.Control
+          value={price}
+          onChange={e => setPrice(e.target.value)}
           className={"mt-3"}
           placeholder="Введите цену"
           />
@@ -99,7 +119,7 @@ const CreateDevice = observer(({show, onHide}) => {
       <Modal.Footer className={"justify-content-around"}>
         <Button variant="outline-danger" onClick={onHide}>Удалить</Button>
         <Button variant="outline-warning" onClick={onHide}>Изменить</Button>
-        <Button variant="outline-success" onClick={onHide}>Добавить</Button>
+        <Button variant="outline-success" onClick={addDevice}>Добавить</Button>
       </Modal.Footer>
     </Modal>
   )
