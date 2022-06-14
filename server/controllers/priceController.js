@@ -42,12 +42,14 @@ class PriceController {
           price: el.price,
           size: el['Size.name'],
           materialId: el.materialId,
+          typeId: el.typeId,
         }];
       } else {
         acc[el['House.name']].push({
           price: el.price,
           size: el['Size.name'],
           materialId: el.materialId,
+          typeId: el.typeId,
         });
       }
       return acc;

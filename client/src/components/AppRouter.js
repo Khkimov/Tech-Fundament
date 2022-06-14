@@ -4,6 +4,9 @@ import { authRoutes, publicRoutes } from '../routes';
 import Shop from '../pages/Shop';
 import { Context } from '..';
 import { observer } from 'mobx-react-lite';
+import FenceFoundation from '../pages/FenceFoundation';
+import PileRiggerFoundation from '../pages/PileRiggerFoundation';
+import SizeBar from './SizeBar';
 
 const AppRouter = observer(() => {
   const {admin} = useContext(Context);
@@ -11,11 +14,16 @@ const AppRouter = observer(() => {
     <Routes>
       {admin.isAuth && authRoutes.map(({path, Component}) =>
       <Route key={path} path={path} element={<Component/>} exact/>
+
       )}
       {publicRoutes.map(({path, Component}) =>
       <Route key={path} path={path} element={<Component/>} exact/>
+
       )}
-      {/* <Route path="*" element={<Shop/>}/> */}
+      {/* <Route path="/" element={<SizeBar/>} exact/> */}
+      <Route path="/type/1" element={<Shop/>} exact/>
+      <Route path="/type/2" element={<FenceFoundation/>} exact/>
+      <Route path="/type/3" element={<PileRiggerFoundation/>} exact/>
     </Routes>
   )
 })

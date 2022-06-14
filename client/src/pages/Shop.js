@@ -17,7 +17,7 @@ const Shop = observer(() => {
     fetchMaterials().then(data => device.setMaterials(data))
     fetchHouses().then(data => device.setHouses(data))
     fetchSizes().then(data => device.setSizes(data))
-    fetchPrices().then(data => device.setPrices(data))
+    fetchPrices(null, null).then(data => device.setPrices(data))
   }, [])
 
   useEffect(() => {
@@ -28,20 +28,7 @@ const Shop = observer(() => {
 
   return (
     <Container>
-      <Row className={"mt-4"}>
-        <Col md={3}>
-          <TypeBar />
-          {/* <Quiz/> */}
-        </Col>
-        <Col md={9}>
-          <SizeBar />
-        </Col>
-      </Row>
-      <Row>
-        <Col md={12}>
-          {/* <Carusel /> */}
-        </Col>
-      </Row>
+      <SizeBar />
     </Container>
   )
 });

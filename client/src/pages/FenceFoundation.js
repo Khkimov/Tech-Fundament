@@ -1,10 +1,10 @@
-  import React, { useContext, useEffect, useState } from "react";
-  import { observer } from "mobx-react-lite";
-  import { Context } from "..";
-  import { Table } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
+import { Context } from "..";
+import { Table } from "react-bootstrap";
 
-  const PriceWithMaterial = observer(() => {
-    const [names, setNames] = useState([])
+const FenceFoundation = observer(() => {
+  const [names, setNames] = useState([])
     const [prices, setPrices] = useState([])
     const {device} = useContext(Context);
 
@@ -17,12 +17,12 @@
 
     return (
       <>
-      <h1>
-      СТОИМОСТЬ ЛЕНТОЧНОГО ФУНДАМЕНТА
-      </h1>
+      <h2>
+      СТОИМОСТЬ МЕЛКОЗАГЛУБЛЕННОГО ЛЕНТОЧНОГО ФУНДАМЕНТА
+      </h2>
       {/* <Materials/> */}
       <p>
-      Цена ленточного фундамента при условии покупки, доставки материала и земляных работах силами заказчика, Вы оплачиваете только услугу по возведению фундамента.
+      Цена фундамента МЗФЛ при условии покупки, доставки материала и земляных работах силами заказчика, Вы оплачиваете только услугу по возведению фундамента.
       </p>
       <Table striped bordered hover>
         <thead>
@@ -36,7 +36,7 @@
             <tr key={index}> 
             {names[index]}
             { el.map(price => {
-              if (price.typeId === 1) {
+              if (price.typeId === 2) {
                 return <td>{price.price}</td>
               }
             }) }
@@ -46,6 +46,6 @@
   </Table>
   </>
     )
-  });
+});
 
-  export default PriceWithMaterial;
+export default FenceFoundation;
