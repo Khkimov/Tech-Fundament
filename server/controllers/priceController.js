@@ -29,12 +29,11 @@ class PriceController {
     const prices = await Price.findAll({
       include: [House, Size, Type, Material],
       raw: true,
+      order: [
+        ['houseId', 'ASC'],
+        ['sizeId', 'ASC'],
+      ],
     });
-    // const pr = prices.map((el) => ({
-    //   price: el.price,
-    //   size: el.Size.name,
-    //   house: el.House.name,
-    // }));
 
     const allPrices = prices.reduce((acc, el) => {
       if (!acc[el['House.name']]) {
@@ -54,7 +53,34 @@ class PriceController {
       }
       return acc;
     }, {});
+    console.log('-----------------------', allPrices);
     return res.json(allPrices);
+  }
+
+  async update(req, res) {
+    const updatePrice = await Price.update(
+      { price: req.body.price },
+
+      {
+        where: {
+          typeId: req.body.typeId,
+          materialId: req.body.materialId,
+          houseId: req.body.houseId,
+          sizeId: req.body.sizeId,
+        },
+      },
+    );
+    const result = await Price.findOne({
+      where: {
+        typeId: req.body.typeId,
+        materialId: req.body.materialId,
+        houseId: req.body.houseId,
+        sizeId: req.body.sizeId,
+      },
+      raw: true,
+    });
+
+    res.json({ result });
   }
 }
 

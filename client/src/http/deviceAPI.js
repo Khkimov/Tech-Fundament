@@ -64,3 +64,8 @@ export const fetchPrices = async (typeId, sizeId, houseId, materialId) => {
   }})
   return (data)
 }
+
+export const editPrice = async (price) => {
+  const {data} = await $authHost.put(`api/price`, price);
+  return data;
+}

@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React, { useContext, useEffect, useState } from "react";
 import { Modal, Button, Form, Dropdown } from "react-bootstrap";
 import { Context } from "../..";
-import { fetchTypes, fetchMaterials, fetchHouses, fetchSizes, fetchPrices, createPrice } from "../../http/deviceAPI";
+import { fetchTypes, fetchMaterials, fetchHouses, fetchSizes, fetchPrices, createPrice, editPrice } from "../../http/deviceAPI";
 
 const CreateDevice = observer(({show, onHide}) => {
   const {device} = useContext(Context);
@@ -21,7 +21,6 @@ const CreateDevice = observer(({show, onHide}) => {
   }, [])
 
   const addDevice = () => {
-
     const newJson = {
       price,
       typeId: device.selectedType.id,
@@ -30,6 +29,17 @@ const CreateDevice = observer(({show, onHide}) => {
       sizeId: device.selectedSize.id
     }
     createPrice(newJson).then(data => onHide())
+  }
+
+  const addNewPrice = () => {
+    const newPrice = {
+      price,
+      typeId: device.selectedType.id,
+      materialId: device.selectedMaterial.id,
+      houseId: device.selectedHouse.id,
+      sizeId: device.selectedSize.id
+    }
+    editPrice(newPrice).then(data => onHide())
   }
   return (
     <Modal
@@ -118,7 +128,7 @@ const CreateDevice = observer(({show, onHide}) => {
       </Modal.Body>
       <Modal.Footer className={"justify-content-around"}>
         <Button variant="outline-danger" onClick={onHide}>Удалить</Button>
-        <Button variant="outline-warning" onClick={onHide}>Изменить</Button>
+        <Button variant="outline-warning" onClick={addNewPrice}>Изменить</Button>
         <Button variant="outline-success" onClick={addDevice}>Добавить</Button>
       </Modal.Footer>
     </Modal>

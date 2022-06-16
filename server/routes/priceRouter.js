@@ -4,5 +4,6 @@ const { checkAdmin } = require('../middleware/adminMiddle');
 
 router.post('/', checkAdmin, priceController.create);
 router.get('/', priceController.getAll);
+router.put('/', checkAdmin, priceController.update);
 
 module.exports = router;
