@@ -1,0 +1,39 @@
+.quiz {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.pageNumbers {
+  list-style: none;
+  display: flex;
+  justify-content: end;
+}
+
+.pageNumbers li{
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pageNumbers li.active {
+  background-color: rgb(44, 42, 42);
+  border-radius: 5px;
+  color: white;
+}
+
+.pageNumbers li button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-size: 1rem;
+}
+
+.pageNumbers li button:hover {
+  background-color: rgb(44, 42, 42);
+  color: white;
+  border-radius: 5px;
+}
+
+.pageNumbers li button:focus {
+  outline: none;
+}
+

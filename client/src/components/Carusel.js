@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import img1 from '../assets/zaglublenniy-fundament.png'
-import img2 from '../assets/svayno-rastverkovy.jpg'
+import img1 from '../assets/foundation/zaglublenniy-fundament.png';
+import img2 from '../assets/foundation/svayno-rastverkovy.jpg';
 
 const Carusel = () => {
   return(

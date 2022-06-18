@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Context } from '..';
 import Carusel from '../components/Carusel';
 import Materials from '../components/Materials';
-import Quiz from '../components/Quiz';
+import Quiz from '../components/quiz/Quiz';
 import SizeBar from '../components/SizeBar';
 import TypeBar from '../components/TypeBar';
 import { fetchMaterials, fetchTypes, fetchSizes, fetchHouses, fetchPrices } from '../http/deviceAPI';

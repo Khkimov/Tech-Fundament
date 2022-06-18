@@ -7,7 +7,7 @@ import {Context} from "./index";
 import {check} from "./http/adminAPI";
 import {Row, Spinner, Col, Container} from "react-bootstrap";
 import TypeBar from './components/TypeBar';
-import Quiz from './components/Quiz';
+import Quiz from './components/quiz/Quiz';
 
 
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
@@ -35,10 +35,10 @@ const App = observer(() => {
           <Row>
           <Col md={3}>
           <TypeBar />
-          <Quiz/>
         </Col>
         <Col md={9}>
           <AppRouter />
+          <Quiz/>
         </Col>
           </Row>
           </Container>

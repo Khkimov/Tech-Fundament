@@ -16,7 +16,10 @@ const TypeBar = observer(() => {
         // active={type.id === device.selectedType.id}
         // onClick={() => device.setSelectedType(type)}
         >
-          <Link to={`/type/${type.id}`}>{type.name}</Link>
+          <Link to={`/type/${type.id}`}
+          style={{textDecoration: 'none', color: 'black'}}
+          
+          >{type.name}</Link>
         </ListGroup.Item>)}
 </ListGroup>
   )
