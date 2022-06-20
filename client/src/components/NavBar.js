@@ -25,7 +25,7 @@ const NavBar = observer(() => {
       </NavLink>
     <Nav className="me-auto">
       <Nav.Link href="#home">
-        <EmailModal/>
+        {/* <EmailModal/> */}
       </Nav.Link>
       <Nav.Link href="#features">Telegram</Nav.Link>
       <Nav.Link href="#pricing">+7 982 211-39-96</Nav.Link>
