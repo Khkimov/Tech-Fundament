@@ -4,7 +4,7 @@ import {Navbar, Container, Nav, Button} from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Context } from '..';
 import { SHOP_ROUTE } from '../utils/consts';
-import EmailModal from './modals/EmailModal';
+import EmailModal from './quiz/EmailModal';
 
 const NavBar = observer(() => {
   const {admin} = useContext(Context);

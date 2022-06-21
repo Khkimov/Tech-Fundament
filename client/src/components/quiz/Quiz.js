@@ -1,68 +1,15 @@
 import { useState } from "react";
-import { Button, Card, Form } from "react-bootstrap";
+import { Button, Card, Container, Form, Row } from "react-bootstrap";
 import IMAGES from "../../assets";
-import EmailModal from "../modals/EmailModal";
+import EmailModal from "./EmailModal";
 import './Quiz.css';
 
 
 const Quiz = () => {
-
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [itemsPerPage, setItemsPerPage] = useState(6);
-
-  // const [pageNumberLimit, setPageNumberLimit] = useState(6);
-  // const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(6);
-  // const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
-
-  // const handleClick = (event) => {
-  //   setCurrentPage(Number(event.target.id))
-  // }
-
-  // const pages = [];
-  // for (let i = 1; i < Math.ceil((IMAGES.length + 2) / itemsPerPage); i++) {
-  //   pages.push(i);
-  // };
-
-  // const indexOfLastItem = currentPage * itemsPerPage;
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = IMAGES.slice(indexOfFirstItem, indexOfLastItem)
-
-  // const renderPageNumber = pages.map((number) => {
-  //   if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
-  //       return (
-  //       <li key={number} 
-  //     id={number}
-  //     onClick={handleClick}
-  //     className={currentPage === number ? 'active pageNumber' : null}
-  //     >
-  //       {number}
-  //     </li>
-  //     );
-  //   } else {
-  //     return null;
-  //   }
-  // });
-
-  // const handleNextBtn = () => {
-  //   setCurrentPage(currentPage + 1);
-  //   if (currentPage + 1 > maxPageNumberLimit) {
-  //     setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
-  //     setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
-  //   }
-  // };
-
-  // const handlePrevBtn = () => {
-  //   setCurrentPage(currentPage - 1);
-
-  //   if ((currentPage - 1) % pageNumberLimit === 0) {
-  //     setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
-  //     setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
-  //   }
-  // };
   return (
-  <div className="quiz">
-    <div className="d-flex flex-wrap">
-       
+  <Container className="quiz">
+    <Row className="d-flex flex-column">
+       <div className="steps">
       <ul className="nav nav-tabs tabs__items">
         {IMAGES.map((el, index) => (
           <div className="tabs__items" key={index}>
@@ -78,13 +25,16 @@ const Quiz = () => {
           </div>
       </ul>
 
+       </div>
+
       {IMAGES.map((el, index) => 
       <div className="tabs__block" id={`tab-${index}`}>
         {el.step.map((elem, ind) => (
           <Card key={ind} 
-          style={{ width: '8rem', 
+          style={{ width: '9rem', 
           margin: '10px',
           cursor: 'pointer',
+          display: 'flex'
           }}
           >
             <Card.Img variant="top" src={elem.img} />
@@ -95,11 +45,13 @@ const Quiz = () => {
         ))}
       </div>
       )}
-    </div>
+
+    </Row>
+    <div className="tabs__block" id="tab-2">
       <EmailModal
-      id="tab-2"
       />
-  </div>
+    </div>
+  </Container>
   )
 };
 

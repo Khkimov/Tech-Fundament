@@ -1,6 +1,8 @@
 .quiz {
   border: 1px solid black;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .pageNumbers {
@@ -46,6 +48,8 @@
 }
 .tabs__block:target {
   display: block;
+  display: flex;
+  margin: 50px auto;
 }
 .tabs__items{
   display: flex;
@@ -53,4 +57,7 @@
 .tabs__item {
   margin: 0px 0px;
   flex: 0 1 33.333%;
+}
+
+.steps {
 }

@@ -33,14 +33,14 @@ const App = observer(() => {
           <NavBar />
           <Container>
           <Row>
-          <Col md={3}>
-          <TypeBar />
-        </Col>
-        <Col md={9}>
-          <AppRouter />
-          <Quiz/>
-        </Col>
+            <Col mk={8}>
+          <Quiz />
+            </Col>
           </Row>
+        <Col md={9}>
+          {/* <TypeBar /> */}
+          {/* <AppRouter /> */}
+        </Col>
           </Container>
       </BrowserRouter>
   );

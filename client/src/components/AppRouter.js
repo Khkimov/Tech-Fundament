@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite';
 import FenceFoundation from '../pages/FenceFoundation';
 import PileRiggerFoundation from '../pages/PileRiggerFoundation';
 import SizeBar from './SizeBar';
+import Quiz from './quiz/Quiz';
 
 const AppRouter = observer(() => {
   const {admin} = useContext(Context);
@@ -20,7 +21,7 @@ const AppRouter = observer(() => {
       <Route key={path} path={path} element={<Component/>} exact/>
 
       )}
-      {/* <Route path="/" element={<SizeBar/>} exact/> */}
+      <Route path="/" element={<Quiz/>} exact/>
       <Route path="/type/1" element={<Shop/>} exact/>
       <Route path="/type/2" element={<FenceFoundation/>} exact/>
       <Route path="/type/3" element={<PileRiggerFoundation/>} exact/>

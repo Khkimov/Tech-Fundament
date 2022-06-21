@@ -1,4 +1,4 @@
-import EmailModal from '../components/modals/EmailModal';
+import EmailModal from '../components/quiz/EmailModal';
 
 // const IMAGES = [
 //   {id: 1, step: 1, img: require('./houses/house1.png'),
