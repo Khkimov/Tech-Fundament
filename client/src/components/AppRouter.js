@@ -21,7 +21,7 @@ const AppRouter = observer(() => {
       <Route key={path} path={path} element={<Component/>} exact/>
 
       )}
-      <Route path="/" element={<Quiz/>} exact/>
+      <Route path="/" element={<Shop/>} exact/>
       <Route path="/type/1" element={<Shop/>} exact/>
       <Route path="/type/2" element={<FenceFoundation/>} exact/>
       <Route path="/type/3" element={<PileRiggerFoundation/>} exact/>

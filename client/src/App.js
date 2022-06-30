@@ -8,6 +8,7 @@ import {check} from "./http/adminAPI";
 import {Row, Spinner, Col, Container} from "react-bootstrap";
 import TypeBar from './components/TypeBar';
 import Quiz from './components/quiz/Quiz';
+import Shop from './pages/Shop';
 
 
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;
@@ -33,14 +34,14 @@ const App = observer(() => {
           <NavBar />
           <Container>
           <Row>
-            <Col mk={8}>
-          <Quiz />
+            <Col>
+          <Shop/>
             </Col>
           </Row>
-        <Col md={9}>
+        {/* <Col md={9}> */}
           {/* <TypeBar /> */}
           {/* <AppRouter /> */}
-        </Col>
+        {/* </Col> */}
           </Container>
       </BrowserRouter>
   );

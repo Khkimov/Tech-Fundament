@@ -3,6 +3,8 @@ import React, { useContext, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Context } from '..';
 import Carusel from '../components/Carusel';
+import Footer from '../components/footer/Footer';
+import Header from '../components/header/Header';
 import Materials from '../components/Materials';
 import Quiz from '../components/quiz/Quiz';
 import SizeBar from '../components/SizeBar';
@@ -28,7 +30,10 @@ const Shop = observer(() => {
 
   return (
     <Container>
-      <SizeBar />
+      <Header />
+      <Quiz />
+      <Footer />
+      {/* <SizeBar /> */}
     </Container>
   )
 });

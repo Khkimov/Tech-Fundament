@@ -27,6 +27,7 @@ const Quiz = () => {
 
        </div>
 
+
       {IMAGES.map((el, index) => 
       <div className="tabs__block" id={`tab-${index}`}>
         {el.step.map((elem, ind) => (
@@ -47,7 +48,7 @@ const Quiz = () => {
       )}
 
     </Row>
-    <div className="tabs__block" id="tab-2">
+    <div className="tabs__block block3" id="tab-2">
       <EmailModal
       />
     </div>
